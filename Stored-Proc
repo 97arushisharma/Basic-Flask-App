@@ -1,0 +1,14 @@
+DELIMITER $$
+
+CREATE PROCEDURE store_stud(IN roll INT,IN fname VARCHAR(30),IN lname VARCHAR(30),IN clas VARCHAR(10))
+    		BEGIN
+    			IF EXISTS(SELECT * FROM student where Roll_No=roll) THEN
+    				SELECT 'The Entry already exist!!' ;
+    				
+    			ELSE
+    				INSERT into student(Roll_No,FName,LName,Class) values(roll,fname,lname,clas);
+    				SELECT 'Successfully Stored!!' ;
+    			END IF;
+			END$$
+
+Delimiter ;
